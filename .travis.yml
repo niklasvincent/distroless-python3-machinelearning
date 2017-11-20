@@ -1,5 +1,8 @@
-python:
-  - "2.7"
+sudo: false
+dist: trusty
+
+language: python
+python: 3.6
 
 install: make docker
 
