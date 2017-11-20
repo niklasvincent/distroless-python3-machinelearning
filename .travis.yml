@@ -1,0 +1,17 @@
+python:
+  - "2.7"
+
+install: make docker
+
+script: make test-travis
+
+sudo: required
+
+services:
+  - docker
+
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+    docker push nlindblad/distroless-python3-machinelearning;
+    fi
